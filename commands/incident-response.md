@@ -46,3 +46,11 @@ Volatility (memory), Velociraptor (endpoint), TheHive (case management), MISP (t
 ## Output
 Save to engagements/<target>/reports/incident-response-<date>.md
 Reference: CND — Incident Response module
+
+## Framework Mapping
+- MITRE ATT&CK: Framework used to classify observed adversary behavior during IR
+- MITRE ATT&CK: TA0040 (Impact) -> T1486 (Data Encrypted for Impact) -- ransomware IR
+- MITRE ATT&CK: TA0003 (Persistence) -> T1547 (Boot or Logon Autostart) -- eradication targets
+- MITRE ATT&CK: TA0005 (Defense Evasion) -> T1070 (Indicator Removal) -- anti-forensics detection
+- Cyber Kill Chain: Response maps to all 7 phases (identify which phase adversary reached)
+- CEH v12: Module 20 -- Computer Forensics / CND Incident Response

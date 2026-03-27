@@ -10,3 +10,9 @@ Perform port scanning on: $ARGUMENTS
 
 Command: nmap -sC -sV -p- -oA engagements/<target>/recon/nmap-full <target>
 Save to `engagements/<target>/recon/port-scan.md`
+
+## Framework Mapping
+- MITRE ATT&CK: TA0043 (Reconnaissance) -> T1595.001 (Active Scanning: Scanning IP Blocks)
+- MITRE ATT&CK: TA0007 (Discovery) -> T1046 (Network Service Discovery)
+- Cyber Kill Chain: Phase 1 -- Reconnaissance
+- CEH v12: Module 03 -- Scanning Networks

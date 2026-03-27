@@ -41,3 +41,10 @@ Reference: CEH Module 8 — Sniffing
 
 ## Safety
 Only capture traffic you are authorized to intercept. Minimize exposure to third-party data.
+
+## Framework Mapping
+- MITRE ATT&CK: TA0006 (Credential Access) -> T1557 (Adversary-in-the-Middle)
+- MITRE ATT&CK: T1557.002 (ARP Cache Poisoning), T1040 (Network Sniffing)
+- MITRE ATT&CK: TA0009 (Collection) -> T1185 (Browser Session Hijacking)
+- Cyber Kill Chain: Phase 7 -- Actions on Objectives
+- CEH v12: Module 08 -- Sniffing

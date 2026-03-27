@@ -34,3 +34,10 @@ Save to engagements/<target>/findings/privesc-*.md with exact commands used.
 
 ## Safety
 Always have rollback plan. Do not modify critical system files without backup.
+
+## Framework Mapping
+- MITRE ATT&CK: TA0004 (Privilege Escalation) -> T1548 (Abuse Elevation Control Mechanism)
+- MITRE ATT&CK: T1068 (Exploitation for Privilege Escalation), T1055 (Process Injection)
+- MITRE ATT&CK: T1134 (Access Token Manipulation), T1574 (Hijack Execution Flow)
+- Cyber Kill Chain: Phase 5 -- Installation
+- CEH v12: Module 06 -- System Hacking (Privilege Escalation)

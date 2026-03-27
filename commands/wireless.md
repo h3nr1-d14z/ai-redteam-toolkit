@@ -50,3 +50,10 @@ Reference: CEH Module 16 — Hacking Wireless Networks
 
 ## Safety
 Only test networks you are authorized to assess. Do not deauth production clients without approval.
+
+## Framework Mapping
+- MITRE ATT&CK: TA0001 (Initial Access) -> T1200 (Hardware Additions)
+- MITRE ATT&CK: TA0006 (Credential Access) -> T1110 (Brute Force), T1557 (Adversary-in-the-Middle)
+- MITRE ATT&CK: TA0042 (Resource Development) -> T1583.005 (Botnet)
+- Cyber Kill Chain: Phase 1 -- Reconnaissance / Phase 4 -- Exploitation
+- CEH v12: Module 16 -- Hacking Wireless Networks

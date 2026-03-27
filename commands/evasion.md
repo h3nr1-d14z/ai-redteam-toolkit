@@ -33,3 +33,10 @@ nmap (evasion flags), wafw00f (WAF detection), sqlmap tamper scripts, Burp Suite
 ## Output
 Save to engagements/<target>/findings/evasion-*.md
 Reference: CEH Module 12 — Evading IDS, Firewalls, and Honeypots
+
+## Framework Mapping
+- MITRE ATT&CK: TA0005 (Defense Evasion) -> T1562 (Impair Defenses)
+- MITRE ATT&CK: T1027 (Obfuscated Files or Information), T1036 (Masquerading)
+- MITRE ATT&CK: T1090 (Proxy), T1572 (Protocol Tunneling)
+- Cyber Kill Chain: Phase 5 -- Installation / Phase 6 -- Command & Control
+- CEH v12: Module 12 -- Evading IDS, Firewalls, and Honeypots

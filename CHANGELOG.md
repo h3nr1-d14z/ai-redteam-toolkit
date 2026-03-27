@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.1] - 2026-03-26
+
+### Added
+
+- MITRE ATT&CK mapping (`docs/mitre-attack-mapping.md`): all 85 slash commands mapped to ATT&CK Enterprise v14 techniques across all 14 tactics (TA0043 through TA0040), plus Cyber Kill Chain phase mapping and technique coverage summary.
+- Certification study paths (`docs/certification-paths.md`): structured preparation guides for CEH v12 (all 20 modules), OSCP (5 phases by exam relevance), PNPT (5 courses), CND (14 modules with defensive focus), PenTest+, eJPT, CRTP, and GPEN. Includes recommended lab platforms.
+- README: added "Certification Alignment" section with certification coverage table.
+- README: added MITRE ATT&CK and certification alignment to Features list.
+- README: added links to new docs in Additional docs section.
+
+### Changed
+
+- README: updated command count from 85 to 95 in headline and Features section.
+
 ## [Unreleased]
 
 ### Fixed

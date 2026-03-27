@@ -59,3 +59,11 @@ Map findings to: OWASP LLM Top 10, MITRE ATLAS, NIST AI RMF
 
 ## Frameworks
 Tag each finding: OWASP-LLM-XX, MITRE-ATLAS-TXXXX, NIST-AI-RMF-XX
+
+## Framework Mapping
+- MITRE ATLAS: AML.T0051 (LLM Prompt Injection), AML.T0054 (LLM Jailbreak)
+- MITRE ATLAS: AML.T0043 (Craft Adversarial Data), AML.T0040 (ML Model Inference API Access)
+- OWASP LLM Top 10: LLM01 (Prompt Injection), LLM02 (Insecure Output Handling)
+- OWASP LLM Top 10: LLM06 (Sensitive Information Disclosure), LLM07 (Insecure Plugin Design)
+- Cyber Kill Chain: Phase 4 -- Exploitation (AI-specific attack surface)
+- CEH v12: Module 21 -- AI/ML Security (emerging domain)

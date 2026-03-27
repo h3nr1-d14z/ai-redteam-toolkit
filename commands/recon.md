@@ -48,3 +48,9 @@ Tech: whatweb > httpx > wappalyzer | DNS: dig > host > nslookup
 
 ## Safety
 Passive recon first. Respect rate limits. No employee enumeration without scope approval.
+
+## Framework Mapping
+- MITRE ATT&CK: TA0043 (Reconnaissance) -> T1595 (Active Scanning), T1592 (Gather Victim Host Information)
+- MITRE ATT&CK: T1590 (Gather Victim Network Information), T1593 (Search Open Websites/Domains)
+- Cyber Kill Chain: Phase 1 -- Reconnaissance
+- CEH v12: Module 02 -- Footprinting and Reconnaissance

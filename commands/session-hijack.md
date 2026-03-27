@@ -34,3 +34,10 @@ Test session hijacking on: $ARGUMENTS
 ## Output
 Save to engagements/<target>/findings/session-*.md
 Reference: CEH Module 11 — Session Hijacking
+
+## Framework Mapping
+- MITRE ATT&CK: TA0006 (Credential Access) -> T1539 (Steal Web Session Cookie)
+- MITRE ATT&CK: TA0008 (Lateral Movement) -> T1563 (Remote Service Session Hijacking)
+- MITRE ATT&CK: TA0005 (Defense Evasion) -> T1550 (Use Alternate Authentication Material)
+- Cyber Kill Chain: Phase 7 -- Actions on Objectives
+- CEH v12: Module 11 -- Session Hijacking

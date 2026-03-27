@@ -1,6 +1,6 @@
 # AI-RedTeam-Toolkit
 
-**AI-powered offensive security framework. 85 slash commands across 11 security domains.**
+**AI-powered offensive security framework. 95 slash commands across 11 security domains.**
 
 A comprehensive, template-driven toolkit for pentesters and red teamers using AI coding assistants. Provides structured methodologies, reusable tools, automated setup, and deep AI integration for every phase of security testing -- from reconnaissance through reporting.
 
@@ -44,7 +44,9 @@ For Windows users, open WSL in the repo root and run:
 
 ## Features
 
-- **71 Slash Commands** across 11 security domains, usable with AI coding assistants
+- **95 Slash Commands** across 11 security domains, usable with AI coding assistants
+- **MITRE ATT&CK Mapping** -- every command mapped to ATT&CK tactics/techniques and Cyber Kill Chain phases
+- **Certification Alignment** -- study paths for CEH v12, OSCP, PNPT, CND, PenTest+, eJPT, CRTP, and GPEN
 - **MCP Integrations** for direct tool-to-AI communication (Ghidra, more planned)
 - **Structured Methodologies** for every engagement type
 - **Engagement Templates** with authorization tracking, scope definition, and reporting
@@ -471,6 +473,25 @@ Connects Claude directly to Ghidra for binary analysis through the Model Context
 - IDA Pro MCP (alternative RE integration)
 - Metasploit MCP (exploitation framework)
 
+## Certification Alignment
+
+The toolkit includes structured study paths that map commands and labs to major security certifications:
+
+| Certification | Issuer | Coverage |
+|--------------|--------|----------|
+| **CEH v12** | EC-Council | All 20 modules mapped to commands and labs |
+| **OSCP** | OffSec | 5-phase study path ordered by exam relevance |
+| **PNPT** | TCM Security | All 5 courses with command-level practice guides |
+| **CND** | EC-Council | Defensive validation using offensive commands |
+| **PenTest+** | CompTIA | All 5 domains with weighted command mapping |
+| **eJPT** | INE | Core topic areas with beginner-friendly commands |
+| **CRTP** | Altered Security | AD-focused attack chain commands |
+| **GPEN** | GIAC/SANS | Full pentest lifecycle command mapping |
+
+See [docs/certification-paths.md](docs/certification-paths.md) for complete study guides with recommended lab platforms.
+
+For MITRE ATT&CK technique mapping across all 14 tactics, see [docs/mitre-attack-mapping.md](docs/mitre-attack-mapping.md).
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on adding slash commands, templates, tools, and lab environments.
@@ -480,6 +501,8 @@ Additional docs:
 - [DEEPTEAM_LEARNINGS.md](DEEPTEAM_LEARNINGS.md)
 - [CHANGELOG.md](CHANGELOG.md)
 - [RELEASE.md](RELEASE.md)
+- [docs/mitre-attack-mapping.md](docs/mitre-attack-mapping.md)
+- [docs/certification-paths.md](docs/certification-paths.md)
 
 Key points:
 - Follow the existing file structure and naming conventions

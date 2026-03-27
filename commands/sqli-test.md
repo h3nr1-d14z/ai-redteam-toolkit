@@ -11,3 +11,9 @@ Output: engagements/<target>/findings/sqli-*.md with CVSS score.
 
 ## Safety
 Verify authorization and scope before proceeding. Document all actions.
+
+## Framework Mapping
+- MITRE ATT&CK: TA0001 (Initial Access) -> T1190 (Exploit Public-Facing Application)
+- MITRE ATT&CK: TA0009 (Collection) -> T1213 (Data from Information Repositories)
+- Cyber Kill Chain: Phase 4 -- Exploitation
+- CEH v12: Module 14 -- Hacking Web Applications (SQL Injection)
