@@ -1,0 +1,77 @@
+ActiveMQ:admin:admin
+Apache Tomcat:admin:
+Apache Tomcat:admin:admin
+Apache Tomcat:admin:password
+Apache Tomcat:manager:manager
+Apache Tomcat:tomcat:s3cret
+Apache Tomcat:tomcat:tomcat
+Argo CD:admin:(auto-generated)
+CouchDB:admin:admin
+cPanel:root:
+dBASE:SYSDBA:masterkey
+Elasticsearch:elastic:changeme
+Elasticsearch:elastic:elastic
+GitLab:admin:5iveL!fe
+GitLab:root:5iveL!fe
+Grafana:admin:admin
+Graylog:admin:admin
+HP iLO:Administrator:
+IBM DB2:db2admin:db2admin
+InfluxDB:admin:admin
+JBoss:admin:admin
+Jenkins:admin:admin
+Jenkins:admin:password
+Jupyter Notebook::jupyter
+Kafka:admin:admin-secret
+Kibana:elastic:changeme
+Kong:admin:
+LDAP:admin:admin
+LDAP:cn=admin:admin
+LDAP:cn=manager:secret
+MariaDB:root:
+Memcached:anonymous:
+Microsoft SQL Server:sa:
+Microsoft SQL Server:sa:sa
+MinIO:minioadmin:minioadmin
+MongoDB:admin:
+MongoDB:admin:admin
+MongoDB:admin:password
+Mosquitto MQTT::
+MySQL:root:
+MySQL:root:mysql
+MySQL:root:password
+MySQL:root:root
+MySQL:root:toor
+Nagios:nagiosadmin:nagiosadmin
+Neo4j:neo4j:neo4j
+Nexus:admin:admin123
+Nginx:admin:admin
+Oracle DB:scott:tiger
+Oracle DB:SYS:change_on_install
+Oracle DB:SYSTEM:manager
+pgAdmin:admin@admin.com:admin
+phpIPAM:admin:ipamadmin
+phpLDAPadmin:cn=admin:admin
+PHPMyAdmin:root:
+Pi-hole:admin:admin
+Portainer:admin:admin
+PostgreSQL:postgres:
+PostgreSQL:postgres:postgres
+Prometheus:admin:admin
+RabbitMQ:guest:guest
+Redis::
+Redis:default:
+Rocket.Chat:admin:admin
+SonarQube:admin:admin
+Splunk:admin:changeme
+Traefik:admin:admin
+UniFi Controller:ubnt:ubnt
+Vault:root:root
+VMware ESXi:root:vmware
+VMware vCenter:administrator@vsphere.local:vmware
+Webmin:admin:
+Webmin:root:
+WordPress:admin:admin
+WordPress:admin:password
+Zabbix:Admin:zabbix
+Zookeeper:admin:admin

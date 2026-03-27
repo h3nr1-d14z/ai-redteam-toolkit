@@ -287,6 +287,158 @@ def list_strings(offset: int = 0, limit: int = 2000, filter: str = None) -> list
         params["filter"] = filter
     return safe_get("strings", params)
 
+@mcp.tool()
+def find_xrefs(address: str, offset: int = 0, limit: int = 100) -> list:
+    """
+    Find all cross-references to and from the given address.
+
+    Combines both inbound (xref-to) and outbound (xref-from) references
+    into a single result set for comprehensive reference analysis.
+
+    Args:
+        address: Target address in hex format (e.g. "0x1400010a0")
+        offset: Pagination offset (default: 0)
+        limit: Maximum number of references per direction (default: 100)
+
+    Returns:
+        List of cross-references grouped by direction (to/from)
+    """
+    refs_to = safe_get("xrefs_to", {"address": address, "offset": offset, "limit": limit})
+    refs_from = safe_get("xrefs_from", {"address": address, "offset": offset, "limit": limit})
+    results = [f"=== References TO {address} ==="]
+    results.extend(refs_to)
+    results.append(f"=== References FROM {address} ===")
+    results.extend(refs_from)
+    return results
+
+
+@mcp.tool()
+def search_strings(pattern: str, offset: int = 0, limit: int = 2000) -> list:
+    """
+    Search for strings matching a regex pattern in the program.
+
+    Args:
+        pattern: Regex pattern to match against string content
+        offset: Pagination offset (default: 0)
+        limit: Maximum number of results (default: 2000)
+
+    Returns:
+        List of matching strings with their addresses
+    """
+    return safe_get("strings", {"offset": offset, "limit": limit, "filter": pattern})
+
+
+@mcp.tool()
+def rename_function_at(address: str, new_name: str) -> str:
+    """
+    Rename the function located at the specified address.
+
+    Args:
+        address: Function address in hex format (e.g. "0x1400010a0")
+        new_name: New name to assign to the function
+
+    Returns:
+        Confirmation message or error
+    """
+    return safe_post("rename_function_by_address", {
+        "function_address": address,
+        "new_name": new_name
+    })
+
+
+@mcp.tool()
+def get_data_types(offset: int = 0, limit: int = 100) -> list:
+    """
+    List all defined data types in the program.
+
+    Retrieves structures, enums, typedefs, and other data type definitions
+    from the Ghidra data type manager.
+
+    Args:
+        offset: Pagination offset (default: 0)
+        limit: Maximum number of data types to return (default: 100)
+
+    Returns:
+        List of data type names and categories
+    """
+    return safe_get("dataTypes", {"offset": offset, "limit": limit})
+
+
+@mcp.tool()
+def get_all_imports(offset: int = 0, limit: int = 100) -> list:
+    """
+    List all imported functions/symbols in the program.
+
+    Args:
+        offset: Pagination offset (default: 0)
+        limit: Maximum number of imports to return (default: 100)
+
+    Returns:
+        List of imported function names and their library sources
+    """
+    return safe_get("imports", {"offset": offset, "limit": limit})
+
+
+@mcp.tool()
+def get_all_exports(offset: int = 0, limit: int = 100) -> list:
+    """
+    List all exported functions/symbols in the program.
+
+    Args:
+        offset: Pagination offset (default: 0)
+        limit: Maximum number of exports to return (default: 100)
+
+    Returns:
+        List of exported symbol names and addresses
+    """
+    return safe_get("exports", {"offset": offset, "limit": limit})
+
+
+@mcp.tool()
+def get_function_graph(address: str) -> list:
+    """
+    Get the function call graph for the function at the given address.
+
+    Returns a list of called functions (callees) and calling functions (callers)
+    to build a call graph around the target function.
+
+    Args:
+        address: Function address in hex format (e.g. "0x1400010a0")
+
+    Returns:
+        List of caller and callee relationships for the function
+    """
+    callers = safe_get("xrefs_to", {"address": address, "offset": 0, "limit": 200})
+    callees = safe_get("xrefs_from", {"address": address, "offset": 0, "limit": 200})
+    results = [f"=== Call Graph for {address} ==="]
+    results.append(f"--- Callers (who calls this function) ---")
+    results.extend(callers)
+    results.append(f"--- Callees (functions called by this) ---")
+    results.extend(callees)
+    return results
+
+
+@mcp.tool()
+def decompile_by_name(name: str) -> str:
+    """
+    Decompile a function by searching for it by name first.
+
+    Searches for a function matching the given name and decompiles it.
+    Useful when you know the function name but not its address.
+
+    Args:
+        name: Function name or substring to search for
+
+    Returns:
+        Decompiled C pseudocode of the matched function
+    """
+    matches = safe_get("searchFunctions", {"query": name, "offset": 0, "limit": 5})
+    if not matches or (len(matches) == 1 and matches[0].startswith("Error")):
+        return f"No function found matching '{name}'"
+    # Use the first match — attempt direct decompilation by name
+    return safe_post("decompile", name)
+
+
 def main():
     parser = argparse.ArgumentParser(description="MCP server for Ghidra")
     parser.add_argument("--ghidra-server", type=str, default=DEFAULT_GHIDRA_SERVER,

@@ -1,0 +1,49 @@
+{__schema{queryType{name}mutationType{name}subscriptionType{name}types{...FullType}directives{name description locations args{...InputValue}}}}
+{__schema{types{name fields{name}}}}
+{__type(name:"__Schema"){name fields{name}}}
+{search(query:"' OR 1=1--"){id}}
+{user(id:"-1 OR 1=1"){id email}}
+{user(id:"../../../etc/passwd"){name}}
+{users(limit:99999){id email role}}
+fragment FullType on __Type{kind name description fields(includeDeprecated:true){name description args{...InputValue}type{...TypeRef}isDeprecated deprecationReason}inputFields{...InputValue}interfaces{...TypeRef}enumValues(includeDeprecated:true){name description isDeprecated deprecationReason}possibleTypes{...TypeRef}}
+fragment InputValue on __InputValue{name description type{...TypeRef}defaultValue}
+fragment TypeRef on __Type{kind name ofType{kind name ofType{kind name ofType{kind name ofType{kind name ofType{kind name ofType{kind name}}}}}}}
+mutation{changePassword(old:"test",new:"test"){status}}
+mutation{createUser(input:{email:"test@test.com",password:"test",role:"admin"}){id}}
+mutation{deleteUser(id:"1"){id}}
+mutation{login(email:"admin@admin.com",password:"admin"){token}}
+mutation{login(username:"admin",password:"admin"){token user{id email role}}}
+mutation{register(email:"test@test.com",password:"test"){token}}
+mutation{resetPassword(email:"admin@admin.com"){status}}
+mutation{updateRole(userId:"1",role:"admin"){id role}}
+mutation{updateUser(id:"1",input:{role:"admin"}){id role}}
+query{__schema{directives{name description locations args{name description type{kind name}}}}}
+query{__schema{mutationType{name fields{name args{name type{kind name}}type{kind name}}}}}
+query{__schema{queryType{name fields{name args{name type{kind name ofType{kind name}}}type{kind name ofType{kind name}}}}}}
+query{__schema{subscriptionType{name fields{name type{kind name}}}}}
+query{__schema{types{name kind description fields{name type{name kind}}}}}
+query{__type(name:"Mutation"){name fields{name args{name type{kind name ofType{kind name}}}type{kind name}}}}
+query{__type(name:"Query"){name fields{name args{name type{kind name ofType{kind name}}}type{kind name}}}}
+query{__type(name:"User"){name fields{name type{name kind}}}}
+query{admin{users{id email role}}}
+query{allUsers{nodes{id email role isAdmin}}}
+query{config{debug maintenance secretKey}}
+query{currentUser{id email role permissions}}
+query{debug{info}}
+query{flag}
+query{getAllUsers{id username email role}}
+query{getUser(id:"1"){id email role password}}
+query{internal{secrets}}
+query{me{id email role permissions apiKey}}
+query{node(id:"1"){...on User{id email role}}}
+query{search(query:"*"){...on User{id email role}}}
+query{secretField}
+query{settings{apiKey debugMode}}
+query{systemHealth{status version uptime}}
+query{user(id:"1"){id username email role passwordHash}}
+query{users(first:100){edges{node{id email role isAdmin}}}}
+query{users(role:"admin"){id email}}
+query{users{id email password role token}}
+subscription{liveNotifications{type message data}}
+subscription{messageAdded{id content sender}}
+subscription{onEvent{type payload}}

