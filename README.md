@@ -1,6 +1,6 @@
 # AI-RedTeam-Toolkit
 
-**AI-powered offensive security framework. 71 slash commands across 11 security domains.**
+**AI-powered offensive security framework. 78 slash commands across 11 security domains.**
 
 A comprehensive, template-driven toolkit for pentesters and red teamers using AI coding assistants. Provides structured methodologies, reusable tools, automated setup, and deep AI integration for every phase of security testing -- from reconnaissance through reporting.
 
@@ -316,6 +316,13 @@ AI performs:
 | `/write-report` | Write security assessment report |
 | `/write-finding` | Write vulnerability finding report |
 | `/write-re-analysis` | Write reverse engineering analysis |
+| `/full-assessment` | Automation | Run full pipeline: recon, scan, pentest, report |
+| `/quick-scan` | Automation | Fast 15-minute surface security scan |
+| `/engagement-status` | Automation | Check engagement progress and findings count |
+| `/screenshot` | Utilities | Capture and document evidence |
+| `/timeline` | Reporting | Build chronological attack timeline |
+| `/cleanup` | Utilities | Remove test artifacts after engagement |
+| `/deconflict` | Utilities | Pre-engagement safety and deconfliction check |
 | `/vuln-report` | Generate vulnerability report |
 
 ### AI/LLM Security (2 commands)

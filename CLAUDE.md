@@ -317,6 +317,13 @@ Canonical source is the flat `commands/*.md` directory (71 files). The list belo
 
 ### Reporting and Writing
 `/write-report`, `/write-finding`, `/write-re-analysis`, `/vuln-report`
+| `/full-assessment` | Automation | Run full pipeline: recon, scan, pentest, report |
+| `/quick-scan` | Automation | Fast 15-minute surface security scan |
+| `/engagement-status` | Automation | Check engagement progress and findings count |
+| `/screenshot` | Utilities | Capture and document evidence |
+| `/timeline` | Reporting | Build chronological attack timeline |
+| `/cleanup` | Utilities | Remove test artifacts after engagement |
+| `/deconflict` | Utilities | Pre-engagement safety and deconfliction check |
 
 ### AI/LLM Security
 `/ai-redteam`, `/ai-guardrail-test`
