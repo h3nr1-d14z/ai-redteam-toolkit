@@ -1,12 +1,13 @@
-Run SQL injection testing on: $ARGUMENTS
+Test SQL injection on: $ARGUMENTS
 
-1. **Identify injection points**: Crawl target, find parameters (GET/POST/Cookie/Header)
-2. **Test manually**: Single quote, boolean-based, UNION-based, time-based payloads
-3. **Automate**: Run sqlmap with appropriate tamper scripts for WAF bypass
-4. **Extract data**: Enumerate databases, tables, columns if injectable
-5. **Escalate**: Test for OS command execution (xp_cmdshell, LOAD_FILE), file read/write (INTO OUTFILE)
-6. **Second-order**: Test stored input that gets used in later SQL queries
-7. **Document**: Save findings to `engagements/<target>/findings/sqli-*.md` with CVSS score
+Identify injection points: GET/POST params, headers, cookies.
+Manual test: single quote, boolean (AND 1=1 vs AND 1=2), UNION SELECT, time-based (pg_sleep/SLEEP).
+Automate: sqlmap with appropriate tamper scripts.
+If found: enumerate DBs, tables, columns.
+Test for: stacked queries, file read/write, OS command execution.
+Use wordlists/sqli/ for payloads.
+Tool fallbacks: sqlmap > manual.
+Output: engagements/<target>/findings/sqli-*.md with CVSS score.
 
-Tools: sqlmap, Burp Suite, manual testing
-Output: engagements/<target>/findings/
+## Safety
+Verify authorization and scope before proceeding. Document all actions.

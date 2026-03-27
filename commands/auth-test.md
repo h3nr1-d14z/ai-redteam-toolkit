@@ -1,11 +1,13 @@
-Test authentication and authorization on: $ARGUMENTS
+Test authentication on: $ARGUMENTS
 
-1. **Login mechanisms**: Test for default creds, brute force protection, account lockout, enumeration via error messages
-2. **Session management**: Cookie attributes (Secure, HttpOnly, SameSite), session fixation, concurrent sessions, timeout
-3. **Password policy**: Minimum complexity, common password rejection, password reset flow security
-4. **MFA**: Test bypass techniques — response manipulation, backup code brute force, lack of MFA re-verification
-5. **JWT/Token**: Algorithm confusion (none/HS256/RS256), weak secrets, claim manipulation, expiry validation
-6. **OAuth/SSO**: Redirect URI manipulation, state parameter validation, scope escalation, token leakage
-7. **Authorization**: IDOR, role escalation, forced browsing, missing function-level access control
+Map auth mechanism (JWT, session, OAuth, SAML, API key).
+For JWT: run tools/web/jwt-toolkit.py decode <token>, test alg:none, weak secret crack, claim tampering.
+For session: test fixation, prediction, timeout.
+For OAuth: test redirect_uri manipulation, state parameter, scope escalation.
+For password: test brute force, credential stuffing, reset poisoning.
+Check MFA bypass, remember-me token security, logout completeness.
+Reference: methodology/web-pentest.md Phase 3.
+Output: engagements/<target>/findings/auth-*.md
 
-Save findings to `engagements/<target>/findings/auth-*.md` with CVSS scores.
+## Safety
+Verify authorization and scope before proceeding. Document all actions.

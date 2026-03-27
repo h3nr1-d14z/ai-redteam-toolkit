@@ -1,16 +1,36 @@
 Perform privilege escalation on: $ARGUMENTS
 
-1. **Enumerate**: Run enumeration scripts — LinPEAS/WinPEAS, linux-exploit-suggester, PowerUp, Seatbelt
-2. **Linux privesc checks**:
-   - SUID/SGID binaries (GTFOBins), writable paths in cron, sudo misconfig (sudo -l)
-   - Kernel exploits, capabilities, writable /etc/passwd, NFS no_root_squash, Docker group
-3. **Windows privesc checks**:
-   - Unquoted service paths, writable service binaries, AlwaysInstallElevated, SeImpersonate/SeAssignPrimaryToken
-   - Missing patches, stored credentials (cmdkey), DLL hijacking, UAC bypass
-4. **Automated exploitation**: Use known techniques for identified vectors
-5. **Verify escalation**: Confirm elevated privileges (whoami, id), test access to sensitive resources
-6. **Chain escalation**: If needed, chain multiple vulnerabilities for full escalation path
-7. **Document**: Record full escalation chain with reproduction steps
+## Pre-flight
+- Determine current user and privileges: `whoami`, `id`, `whoami /priv`
+- Identify OS: Linux or Windows
+- Check if target is in scope for privilege escalation
 
-Tools: LinPEAS, WinPEAS, GTFOBins, PEASS-ng, PowerUp, BeRoot
-Save to `engagements/<target>/findings/privesc-*.md`
+## Linux Privilege Escalation
+1. **SUID/SGID**: `find / -perm -4000 -type f 2>/dev/null` → check GTFOBins
+2. **Sudo**: `sudo -l` → check for NOPASSWD entries, wildcard abuse
+3. **Cron jobs**: `cat /etc/crontab`, `ls /etc/cron.*` → writable scripts?
+4. **Capabilities**: `getcap -r / 2>/dev/null` → cap_setuid, cap_dac_override
+5. **Writable paths**: `/etc/passwd` writable? `.bashrc` injection?
+6. **Kernel**: `uname -r` → check exploit-db for kernel exploits (last resort)
+7. **Services**: running as root with writable configs?
+8. **Docker**: `docker ps` → if in docker group, mount host filesystem
+- Auto-scan: `linpeas.sh` or `linux-smart-enumeration`
+- Reference: cheatsheets/linux-privesc.md
+
+## Windows Privilege Escalation
+1. **Services**: unquoted paths, weak permissions, writable binaries
+2. **Tokens**: SeImpersonate → JuicyPotato/PrintSpoofer/GodPotato
+3. **AlwaysInstallElevated**: MSI-based escalation
+4. **Registry**: AutoRun, service configs, AlwaysInstallElevated keys
+5. **Scheduled tasks**: writable tasks running as SYSTEM
+6. **DLL hijacking**: missing DLLs in privileged processes
+7. **Credentials**: cached creds, credential manager, autologon registry
+8. **UAC bypass**: fodhelper, eventvwr, CMSTPLUA
+- Auto-scan: `winpeas.exe` or `PowerUp.ps1` or `SharpUp.exe`
+- Reference: cheatsheets/windows-privesc.md
+
+## Output
+Save to engagements/<target>/findings/privesc-*.md with exact commands used.
+
+## Safety
+Always have rollback plan. Do not modify critical system files without backup.

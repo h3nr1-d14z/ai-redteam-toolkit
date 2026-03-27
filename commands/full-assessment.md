@@ -1,14 +1,14 @@
-Run a full automated security assessment pipeline on: $ARGUMENTS
+Run full automated assessment pipeline on: $ARGUMENTS
 
-Orchestrate these phases automatically:
-1. **Recon** — DNS, headers, tech stack, subdomains, ports, SSL, reverse IP
-2. **Scan** — Nuclei (critical+high), port scan, service identification
-3. **Web pentest** — Auth, injection (SQLi/XSS/SSRF/SSTI), access control, business logic
-4. **API test** — If API endpoints found, test REST/GraphQL/WebSocket security
-5. **Report** — Compile all findings into final report
-
-Save progress after each phase. If any phase fails, continue with next.
+Phase 1: /deconflict then /recon.
+Phase 2: /nuclei-scan (critical+high) + /scan-ports.
+Phase 3: /pentest — if API found also /api-pentest, if cloud also /cloud-pentest, if auth also /auth-test.
+Phase 4: /exploit for confirmed vulns.
+Phase 5: /write-report to compile.
+Save progress after each phase.
+If any phase fails, continue with next.
+For OMC users: /ralph /full-assessment for autopilot mode.
 Output: engagements/<target>/reports/full-assessment-<date>.md
 
 ## Safety
-Verify authorization before starting. Confirm scope. Check testing window.
+Verify authorization and scope before proceeding. Document all actions.
