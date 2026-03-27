@@ -340,6 +340,23 @@ AI performs:
 |---------|-------------|
 | `/hash-crack` | Hash cracking |
 | `/generate-wordlist` | Generate custom wordlists |
+| `/enumerate` | Reconnaissance | Deep enumeration: NetBIOS, SNMP, LDAP, DNS, SMB, RPC (CEH M04) |
+| `/vuln-scan` | Scanning | Vulnerability scanning with Nessus/OpenVAS (CEH M05) |
+| `/steganography` | Forensics | Hide/detect data in images, audio, text (CEH M06) |
+| `/metasploit` | Exploitation | Metasploit workflow: search, exploit, meterpreter (CEH/OSCP) |
+| `/password-attack` | Credential Access | Online + offline password cracking (CEH M06) |
+| `/honeypot-detect` | Reconnaissance | Detect and identify honeypots (CEH M12) |
+| `/pivot` | Lateral Movement | SSH tunnels, chisel, ligolo, proxychains (OSCP) |
+| `/ad-enum` | Reconnaissance | AD enumeration: BloodHound, PowerView (OSCP/PNPT) |
+| `/post-exploit` | Post-Exploitation | Persistence, collection, exfiltration, covering tracks (CEH M06) |
+| `/web-server-hack` | Web | Web server exploitation and misconfiguration (CEH M13) |
+| `/evasion` | Defense Evasion | IDS/Firewall/WAF evasion techniques (CEH M12) |
+| `/wireless` | Wireless | Wireless network security testing (CEH M16) |
+| `/iot-hack` | IoT | IoT/OT device security analysis (CEH M18) |
+| `/session-hijack` | Web | Session hijacking techniques (CEH M11) |
+| `/sniff` | Network | Network sniffing and MITM attacks (CEH M08) |
+| `/crypto-attack` | Cryptography | Cryptographic implementation analysis (CEH M20) |
+| `/incident-response` | DFIR | Incident response workflow (CND) |
 
 ## Directory Structure
 
