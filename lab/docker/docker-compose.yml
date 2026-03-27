@@ -1,0 +1,103 @@
+# Vulnerable Web Application Lab Environment
+#
+# Usage:
+#   docker compose up -d          Start all services
+#   docker compose down            Stop all services
+#   docker compose ps              List running services
+#   docker compose logs -f dvwa    Follow DVWA logs
+#
+# Access:
+#   DVWA:          http://localhost:8081
+#   Juice Shop:    http://localhost:3000
+#   WebGoat:       http://localhost:8080/WebGoat
+#   WebWolf:       http://localhost:9090
+#
+# WARNING: These applications are intentionally vulnerable.
+#          Do NOT expose them to the internet.
+#          Run only on isolated lab networks.
+
+services:
+
+  # -----------------------------------------------------------------------
+  # DVWA - Damn Vulnerable Web Application
+  # Classic PHP/MySQL vulnerable app covering OWASP Top 10
+  # Default login: admin / password
+  # -----------------------------------------------------------------------
+  dvwa:
+    image: vulnerables/web-dvwa:latest
+    container_name: dvwa
+    ports:
+      - "8081:80"
+    environment:
+      - MYSQL_HOSTNAME=dvwa-db
+      - MYSQL_DATABASE=dvwa
+      - MYSQL_USERNAME=dvwa
+      - MYSQL_PASSWORD=dvwa_lab_password
+    depends_on:
+      - dvwa-db
+    restart: unless-stopped
+    networks:
+      - lab-network
+
+  dvwa-db:
+    image: mysql:5.7
+    container_name: dvwa-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=dvwa_root_lab_password
+      - MYSQL_DATABASE=dvwa
+      - MYSQL_USER=dvwa
+      - MYSQL_PASSWORD=dvwa_lab_password
+    volumes:
+      - dvwa-db-data:/var/lib/mysql
+    restart: unless-stopped
+    networks:
+      - lab-network
+
+  # -----------------------------------------------------------------------
+  # OWASP Juice Shop
+  # Modern JavaScript vulnerable app (Node.js, Angular)
+  # Covers OWASP Top 10 and more, with built-in scoreboard
+  # Access scoreboard: http://localhost:3000/#/score-board
+  # -----------------------------------------------------------------------
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    container_name: juice-shop
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=unsafe
+    restart: unless-stopped
+    networks:
+      - lab-network
+
+  # -----------------------------------------------------------------------
+  # OWASP WebGoat
+  # Java-based teaching platform with guided lessons
+  # Register a new account on first visit
+  # WebGoat: http://localhost:8080/WebGoat
+  # WebWolf: http://localhost:9090 (attacker simulation tool)
+  # -----------------------------------------------------------------------
+  webgoat:
+    image: webgoat/webgoat:latest
+    container_name: webgoat
+    ports:
+      - "8080:8080"
+      - "9090:9090"
+    environment:
+      - WEBGOAT_HOST=0.0.0.0
+      - WEBGOAT_PORT=8080
+      - WEBWOLF_HOST=0.0.0.0
+      - WEBWOLF_PORT=9090
+    restart: unless-stopped
+    networks:
+      - lab-network
+
+volumes:
+  dvwa-db-data:
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

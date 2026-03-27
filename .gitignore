@@ -1,0 +1,251 @@
+# ============================================================================
+# AI-RedTeam-Toolkit .gitignore
+# Security-aware gitignore for offensive security projects
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Engagements - NEVER commit client data
+# ----------------------------------------------------------------------------
+engagements/*/
+!engagements/_template/
+
+# ----------------------------------------------------------------------------
+# Credentials & Secrets
+# ----------------------------------------------------------------------------
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials*
+secrets*
+.env
+.env.*
+*.token
+*.secret
+id_rsa
+id_ed25519
+*.ovpn
+vpn-config*
+
+# ----------------------------------------------------------------------------
+# Binaries & Executables
+# ----------------------------------------------------------------------------
+*.exe
+*.dll
+*.so
+*.dylib
+*.apk
+*.ipa
+*.deb
+*.rpm
+*.msi
+*.bin
+*.elf
+*.o
+*.obj
+*.class
+*.jar
+*.war
+
+# ----------------------------------------------------------------------------
+# Tool Output Files
+# ----------------------------------------------------------------------------
+# Network captures
+*.pcap
+*.pcapng
+*.cap
+
+# Burp Suite
+*.burp
+*.burp.bak
+
+# Nmap
+*.nmap
+*.gnmap
+*.xml.nmap
+
+# Nuclei
+nuclei-output/
+
+# SQLMap
+sqlmap-output/
+
+# Gobuster / ffuf / feroxbuster
+*.ffuf
+*.ferox
+
+# Metasploit
+*.rc
+loot/
+.msf4/
+
+# Cobalt Strike
+*.cna
+cobaltstrike.store
+
+# Responder
+Responder-Session.log
+Responder.db
+logs/Responder*
+
+# BloodHound
+*.json.gz
+bloodhound-data/
+
+# ----------------------------------------------------------------------------
+# Reverse Engineering
+# ----------------------------------------------------------------------------
+# Ghidra
+*.gpr
+*.rep/
+*.lock
+*.lock~
+
+# IDA Pro
+*.idb
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+
+# radare2
+*.r2
+
+# Binary Ninja
+*.bndb
+
+# Firmware extraction
+_extracted/
+extracted-firmware/
+
+# ----------------------------------------------------------------------------
+# Mobile Testing
+# ----------------------------------------------------------------------------
+# Decompiled output (regenerate from source)
+decompiled/
+smali/
+jadx-output/
+
+# Frida
+frida-server*
+
+# Objection
+objection-output/
+
+# ----------------------------------------------------------------------------
+# Game Hacking
+# ----------------------------------------------------------------------------
+# Unity dumps
+il2cpp-dump/
+DummyDll/
+GameAssembly.so
+GameAssembly.dll
+
+# Game assets (too large)
+*.unity3d
+*.assets
+*.bundle
+*.pak
+
+# Cheat Engine tables
+*.CT
+
+# ----------------------------------------------------------------------------
+# Build & Runtime
+# ----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.Python
+venv/
+.venv/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+node_modules/
+package-lock.json
+yarn.lock
+
+# Rust
+target/
+
+# Go
+vendor/
+
+# C/C++
+*.out
+a.out
+
+# ----------------------------------------------------------------------------
+# OS Files
+# ----------------------------------------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+
+# ----------------------------------------------------------------------------
+# IDE & Editor
+# ----------------------------------------------------------------------------
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.orig
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# ----------------------------------------------------------------------------
+# AI / Orchestration
+# ----------------------------------------------------------------------------
+.omc/
+.claude/
+!.claude/settings.json
+
+# ----------------------------------------------------------------------------
+# Misc
+# ----------------------------------------------------------------------------
+*.log
+*.cache
+.cache/
+tmp/
+temp/
+*.zip
+*.tar.gz
+*.7z
+*.rar
+
+# Large wordlists (use git-lfs or download scripts instead)
+# wordlists/rockyou.txt
+# wordlists/SecLists/
+
+# Docker
+docker-compose.override.yml
