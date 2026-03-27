@@ -1,5 +1,16 @@
 Analyze IoT/OT device security on: $ARGUMENTS
 
+## Hardware Required
+- UART adapter (USB-to-TTL, e.g., FT232RL, CP2102)
+- Logic analyzer (Saleae, DSLogic) for protocol analysis
+- JTAG/SWD debugger (J-Link, ST-Link) for firmware extraction
+- SDR (HackRF, RTL-SDR) for RF analysis (Zigbee, Z-Wave, BLE)
+- BLE sniffer (nRF52840 dongle, Ubertooth) for Bluetooth
+- Bus Pirate for SPI/I2C flash reading
+- Multimeter for identifying debug pins
+- Optional: oscilloscope for hardware glitching
+
+
 ## Pre-flight
 - Identify device type, manufacturer, model, firmware version
 - Determine network connectivity (WiFi, BLE, Zigbee, Z-Wave, cellular)

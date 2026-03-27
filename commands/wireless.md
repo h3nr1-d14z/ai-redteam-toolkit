@@ -1,5 +1,11 @@
 Test wireless network security on: $ARGUMENTS
 
+## Hardware Required
+- Wireless adapter with monitor mode (e.g., Alfa AWUS036ACH, TP-Link TL-WN722N v1)
+- For WPA3: adapter supporting SAE
+- Optional: directional antenna for long-range
+
+
 ## Pre-flight
 - Verify wireless testing is explicitly in scope
 - Identify target SSIDs and BSSIDs
