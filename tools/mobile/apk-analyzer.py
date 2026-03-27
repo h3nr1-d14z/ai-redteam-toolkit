@@ -435,7 +435,11 @@ def extract_manifest_binary(apk_path: Path) -> ET.Element | None:
         return None
 
     parser = BinaryXmlParser(manifest_data)
-    return parser.parse()
+    try:
+        return parser.parse()
+    except (struct.error, ValueError, IndexError) as exc:
+        print(f"[!] Binary XML parse error: {exc}", file=sys.stderr)
+        return None
 
 
 def extract_manifest_text(apk_path: Path) -> str | None:
