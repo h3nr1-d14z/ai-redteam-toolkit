@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DATABASE_URL=postgresql://apiuser:apipass123@db:5432/apilab
+      - JWT_SECRET=secret123
+      - API_KEY=sk-live-vuln-lab-key-do-not-use-in-prod
+      - FLASK_ENV=development
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - api-net
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=apiuser
+      - POSTGRES_PASSWORD=apipass123
+      - POSTGRES_DB=apilab
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U apiuser -d apilab"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - api-net
+
+volumes:
+  pgdata:
+
+networks:
+  api-net:
+    driver: bridge

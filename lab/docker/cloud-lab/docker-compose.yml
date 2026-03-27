@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  localstack:
+    image: localstack/localstack:3.0
+    ports:
+      - "4566:4566"       # LocalStack Gateway
+      - "4510-4559:4510-4559"  # External service ports
+    environment:
+      - SERVICES=s3,iam,lambda,sqs
+      - DEBUG=1
+      - PERSISTENCE=1
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      # Default region for all resources
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - localstack_data:/var/lib/localstack
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - cloud-net
+
+volumes:
+  localstack_data:
+
+networks:
+  cloud-net:
+    driver: bridge
