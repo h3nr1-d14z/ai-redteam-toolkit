@@ -515,8 +515,7 @@ OMC adds specialized agents for security work:
 - `oh-my-claudecode:architect` -- strategic planning
 - `oh-my-claudecode:code-reviewer` -- code review
 - `oh-my-claudecode:security-reviewer` -- security vulnerability detection
-- `/ralph` -- autonomous loop until task completion
-- `/team N:executor "task"` -- parallel agent execution
+- OMC skills: ralph (autonomous loop), team (parallel agents), ultrawork (batch execution)
 
 ## MCP Integrations
 
