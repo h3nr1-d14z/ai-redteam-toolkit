@@ -465,29 +465,37 @@ AI-RedTeam-Toolkit is designed primarily for **Claude Code** but works with othe
 
 **Claude Code** -- works out of the box. Slash commands are in `.claude/commands/*.md` and auto-detected.
 
-**OpenCode** -- link the commands so OpenCode can find them:
+**OpenCode** -- commands must be in `.opencode/commands/`. Copy or symlink from `.claude/commands/`:
 
 ```bash
-# Option 1: Symlink .claude/commands to OpenCode's command directory
-ln -s "$(pwd)/.claude/commands" "$(pwd)/.opencode/commands"
-
-# Option 2: If OpenCode uses a different path, adjust accordingly
+# Option 1: Copy commands (works everywhere — Ubuntu, WSL, macOS, Windows)
 mkdir -p .opencode
-ln -s "$(pwd)/.claude/commands" "$(pwd)/.opencode/commands"
+cp -r .claude/commands .opencode/commands
+
+# Option 2: Symlink (macOS/Linux native only — does NOT work on WSL)
+mkdir -p .opencode
+ln -s ../.claude/commands .opencode/commands
 ```
+
+> **Note**: On Ubuntu WSL, symlinks across mount points can break. Use **Option 1** (copy) instead.
+> To keep commands in sync after updates, re-run the copy command or use:
+> ```bash
+> rsync -a --delete .claude/commands/ .opencode/commands/
+> ```
 
 **Any AI Assistant** -- the `commands/` directory (repo root) contains the same 95 command files as a flat mirror. Point your assistant to read from `commands/*.md` for methodology guides.
 
 ### Command Structure
 
-Commands live in two locations (kept in sync):
+Commands live in three possible locations:
 
 ```
-.claude/commands/*.md   <-- Claude Code native (auto-detected as /slash commands)
-commands/*.md           <-- Universal mirror (works with any AI assistant)
+.claude/commands/*.md     <-- Claude Code (auto-detected as /slash commands)
+.opencode/commands/*.md   <-- OpenCode (auto-detected as /slash commands)
+commands/*.md             <-- Universal mirror (any AI assistant)
 ```
 
-Both directories contain identical 95 command files covering:
+All directories contain identical 95 command files covering:
 - Engagement management (`/new-engagement`, `/close-engagement`)
 - Web pentesting (`/pentest`, `/sqli-test`, `/xss-hunt`, ...)
 - Mobile, RE, exploit dev, cloud, red team, OSINT, forensics, CTF, AI security
