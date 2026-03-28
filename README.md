@@ -55,7 +55,7 @@ For Windows users, open WSL in the repo root and run:
 - **Lab Environments** with Docker-based vulnerable applications
 - **Finding Templates** with CVSS v3.1 scoring and standardized format
 - **Report Templates** for professional deliverables
-- **Cross-Tool Compatibility** designed for Claude Code with OpenCode support
+- **Multi-Tool Support** for Claude Code (native), OpenCode, and oh-my-claudecode (OMC) for multi-agent orchestration
 
 ## Supported Domains
 
@@ -318,13 +318,6 @@ AI performs:
 | `/write-report` | Write security assessment report |
 | `/write-finding` | Write vulnerability finding report |
 | `/write-re-analysis` | Write reverse engineering analysis |
-| `/full-assessment` | Automation | Run full pipeline: recon, scan, pentest, report |
-| `/quick-scan` | Automation | Fast 15-minute surface security scan |
-| `/engagement-status` | Automation | Check engagement progress and findings count |
-| `/screenshot` | Utilities | Capture and document evidence |
-| `/timeline` | Reporting | Build chronological attack timeline |
-| `/cleanup` | Utilities | Remove test artifacts after engagement |
-| `/deconflict` | Utilities | Pre-engagement safety and deconfliction check |
 | `/vuln-report` | Generate vulnerability report |
 
 ### AI/LLM Security (2 commands)
@@ -334,29 +327,36 @@ AI performs:
 | `/ai-redteam` | AI/LLM red teaming workflow |
 | `/ai-guardrail-test` | AI guardrail and safety testing |
 
-### Utility (2 commands)
+### Automation and Utilities (26 commands)
 
 | Command | Description |
 |---------|-------------|
-| `/hash-crack` | Hash cracking |
+| `/full-assessment` | Run full pipeline: recon, scan, pentest, report |
+| `/quick-scan` | Fast 15-minute surface security scan |
+| `/engagement-status` | Check engagement progress and findings count |
+| `/screenshot` | Capture and document evidence |
+| `/timeline` | Build chronological attack timeline |
+| `/cleanup` | Remove test artifacts after engagement |
+| `/deconflict` | Pre-engagement safety and deconfliction check |
+| `/vuln-scan` | Vulnerability scanning with Nessus/OpenVAS |
+| `/metasploit` | Metasploit workflow: search, exploit, meterpreter |
+| `/password-attack` | Online and offline password cracking |
+| `/hash-crack` | Hash cracking workflows |
 | `/generate-wordlist` | Generate custom wordlists |
-| `/enumerate` | Reconnaissance | Deep enumeration: NetBIOS, SNMP, LDAP, DNS, SMB, RPC (CEH M04) |
-| `/vuln-scan` | Scanning | Vulnerability scanning with Nessus/OpenVAS (CEH M05) |
-| `/steganography` | Forensics | Hide/detect data in images, audio, text (CEH M06) |
-| `/metasploit` | Exploitation | Metasploit workflow: search, exploit, meterpreter (CEH/OSCP) |
-| `/password-attack` | Credential Access | Online + offline password cracking (CEH M06) |
-| `/honeypot-detect` | Reconnaissance | Detect and identify honeypots (CEH M12) |
-| `/pivot` | Lateral Movement | SSH tunnels, chisel, ligolo, proxychains (OSCP) |
-| `/ad-enum` | Reconnaissance | AD enumeration: BloodHound, PowerView (OSCP/PNPT) |
-| `/post-exploit` | Post-Exploitation | Persistence, collection, exfiltration, covering tracks (CEH M06) |
-| `/web-server-hack` | Web | Web server exploitation and misconfiguration (CEH M13) |
-| `/evasion` | Defense Evasion | IDS/Firewall/WAF evasion techniques (CEH M12) |
-| `/wireless` | Wireless | Wireless network security testing (CEH M16) |
-| `/iot-hack` | IoT | IoT/OT device security analysis (CEH M18) |
-| `/session-hijack` | Web | Session hijacking techniques (CEH M11) |
-| `/sniff` | Network | Network sniffing and MITM attacks (CEH M08) |
-| `/crypto-attack` | Cryptography | Cryptographic implementation analysis (CEH M20) |
-| `/incident-response` | DFIR | Incident response workflow (CND) |
+| `/enumerate` | Deep enumeration: NetBIOS, SNMP, LDAP, DNS, SMB, RPC |
+| `/honeypot-detect` | Detect and identify honeypots |
+| `/pivot` | Network pivoting: SSH tunnels, chisel, ligolo, proxychains |
+| `/ad-enum` | AD enumeration: BloodHound, PowerView |
+| `/post-exploit` | Post-exploitation: persistence, collection, exfiltration |
+| `/web-server-hack` | Web server exploitation and misconfiguration |
+| `/evasion` | IDS/Firewall/WAF evasion techniques |
+| `/wireless` | Wireless network security testing |
+| `/iot-hack` | IoT/OT device security analysis |
+| `/session-hijack` | Session hijacking techniques |
+| `/sniff` | Network sniffing and MITM attacks |
+| `/steganography` | Detect and analyze hidden data in files |
+| `/crypto-attack` | Cryptographic implementation analysis |
+| `/incident-response` | Incident response workflow |
 
 ## Directory Structure
 
@@ -451,71 +451,91 @@ AI-RedTeam-Toolkit/
     └── vm/                      # VM setup scripts and notes
 ```
 
-## Cross-Tool Compatibility
+## AI Assistant Setup
 
-AI-RedTeam-Toolkit is designed primarily for **Claude Code** but works with other AI coding assistants:
+AI-RedTeam-Toolkit works natively with three AI coding assistants. Pick one or use all three together.
 
-| Assistant | Support Level | How It Works |
-|-----------|--------------|--------------|
-| **Claude Code** | Full | CLAUDE.md instructions, slash commands (`.claude/commands/`), MCP integrations |
-| **OpenCode** | Full | Symlink commands from `.claude/commands/` (see setup below) |
-| **Other AI Assistants** | Partial | `commands/` markdown files serve as universal instruction sets |
+| Assistant | Support | Setup Required |
+|-----------|---------|----------------|
+| **Claude Code** | Full — slash commands, skills, MCP integrations | None — works out of the box |
+| **OpenCode** | Full — slash commands | Copy commands to `.opencode/commands/` |
+| **oh-my-claudecode (OMC)** | Extended — multi-agent orchestration on top of Claude Code | `npm install -g oh-my-claudecode && omc setup` |
 
-### Command Setup
+### Claude Code
 
-**Claude Code** -- works out of the box. Slash commands are in `.claude/commands/*.md` and auto-detected.
+Works out of the box. Slash commands are auto-detected from `.claude/commands/*.md`.
 
-**OpenCode** -- commands must be in `.opencode/commands/`. Copy or symlink from `.claude/commands/`:
+**Skills** in `.claude/skills/` extend Claude's behavior for security-specific workflows:
+
+| Skill | Trigger |
+|-------|---------|
+| Full pentest workflow | `/pentest` |
+| Reverse engineering | `/reverse` |
+| Reconnaissance | `/recon` |
+| CTF solving | `/ctf` |
+| Exploit development | `/exploit` |
+| Game hacking | `/game-hack` |
+| Mobile pentesting | `/mobile-pentest` |
+| SSRF exploitation | `/ssrf-scan` |
+
+**MCP Integration** -- GhidraMCP connects Claude Code directly to Ghidra for binary analysis. See [MCP Integrations](#mcp-integrations) below.
+
+### OpenCode
+
+Commands must be in `.opencode/commands/`. Copy from `.claude/commands/`:
 
 ```bash
-# Option 1: Copy commands (works everywhere — Ubuntu, WSL, macOS, Windows)
+# Works everywhere: macOS, Linux, WSL
 mkdir -p .opencode
 cp -r .claude/commands .opencode/commands
-
-# Option 2: Symlink (macOS/Linux native only — does NOT work on WSL)
-mkdir -p .opencode
-ln -s ../.claude/commands .opencode/commands
 ```
 
-> **Note**: On Ubuntu WSL, symlinks across mount points can break. Use **Option 1** (copy) instead.
-> To keep commands in sync after updates, re-run the copy command or use:
+> **Symlink alternative** (macOS/Linux native only — does NOT work on WSL):
 > ```bash
-> rsync -a --delete .claude/commands/ .opencode/commands/
+> mkdir -p .opencode
+> ln -s ../.claude/commands .opencode/commands
 > ```
 
-**Any AI Assistant** -- the `commands/` directory (repo root) contains the same 95 command files as a flat mirror. Point your assistant to read from `commands/*.md` for methodology guides.
-
-### Command Structure
-
-Commands live in three possible locations:
-
-```
-.claude/commands/*.md     <-- Claude Code (auto-detected as /slash commands)
-.opencode/commands/*.md   <-- OpenCode (auto-detected as /slash commands)
-commands/*.md             <-- Universal mirror (any AI assistant)
+To resync after command updates:
+```bash
+rsync -a --delete .claude/commands/ .opencode/commands/
 ```
 
-All directories contain identical 95 command files covering:
-- Engagement management (`/new-engagement`, `/close-engagement`)
-- Web pentesting (`/pentest`, `/sqli-test`, `/xss-hunt`, ...)
-- Mobile, RE, exploit dev, cloud, red team, OSINT, forensics, CTF, AI security
-- Each command includes methodology, tools, step-by-step workflow
+OpenCode reads `CLAUDE.md` as its project instructions file automatically — no extra configuration needed.
 
-### oh-my-claudecode (OMC) Integration
+### oh-my-claudecode (OMC)
 
-For advanced multi-agent orchestration, install [oh-my-claudecode](https://github.com/anthropics/claude-code):
+OMC adds multi-agent orchestration on top of Claude Code for autonomous, parallel, and iterative security workflows.
 
+**Install:**
 ```bash
 npm install -g oh-my-claudecode
 omc setup
 ```
 
-OMC adds specialized agents for security work:
-- `oh-my-claudecode:executor` -- focused task execution
-- `oh-my-claudecode:architect` -- strategic planning
-- `oh-my-claudecode:code-reviewer` -- code review
-- `oh-my-claudecode:security-reviewer` -- security vulnerability detection
-- OMC skills: ralph (autonomous loop), team (parallel agents), ultrawork (batch execution)
+**OMC workflows for this toolkit:**
+
+| Workflow | Command | Use Case |
+|----------|---------|----------|
+| Autonomous pentest loop | `/ralph /pentest target.com` | Runs until thorough, self-reviewing |
+| Parallel agents | `/team 3:executor "pentest target.com"` | Agents split web/API/infra in parallel |
+| Batch multi-target | /ultrawork | Recon/scan multiple targets simultaneously |
+| Root-cause tracing | `/trace "why does X work?"` | Trace a vulnerability to its root cause |
+| Multi-model analysis | /sciomc | Claude + Codex + Gemini on a complex binary |
+| Continuous monitoring | `/loop 5m /quick-scan target` | Poll target during an engagement |
+| Iterative exploit dev | `/ralph /exploit "SQLi on /api/users"` | Loop until working exploit |
+
+See [docs/omc-integration.md](docs/omc-integration.md) for full OMC workflow examples.
+
+### Command Locations
+
+All three locations contain the same 95 command files — use whichever matches your assistant:
+
+```
+commands/*.md              # Universal mirror (any AI assistant)
+.claude/commands/*.md      # Claude Code (auto-detected as /commands)
+.opencode/commands/*.md    # OpenCode (auto-detected as /commands)
+```
 
 ## MCP Integrations
 

@@ -1,6 +1,41 @@
 # OMC (oh-my-claudecode) Integration Guide
 
-Supercharge AI-RedTeam-Toolkit with oh-my-claudecode's orchestration capabilities.
+Supercharge AI-RedTeam-Toolkit with oh-my-claudecode's multi-agent orchestration capabilities.
+
+## Installation
+
+```bash
+npm install -g oh-my-claudecode
+omc setup
+```
+
+Run `omc setup` once in the repo root to initialize project memory and agent state. OMC works on top of Claude Code — you need Claude Code installed first.
+
+## Agents Available
+
+OMC ships specialized agents accessible as `oh-my-claudecode:<name>`:
+
+| Agent | Use Case |
+|-------|----------|
+| `executor` | Focused implementation — write exploits, tools, scripts |
+| `architect` | Strategic planning — engagement planning, attack chains |
+| `security-reviewer` | Detect vulnerabilities in generated code |
+| `code-reviewer` | Review exploit code quality and correctness |
+| `tracer` | Evidence-driven root-cause analysis |
+| `debugger` | Fix broken exploits, diagnose tool failures |
+| `scientist` | Research and data analysis — vuln research, binary analysis |
+
+## OMC Skills for Security Work
+
+| Skill | Command | What It Does |
+|-------|---------|--------------|
+| Autonomous loop | `/ralph /pentest target.com` | Repeats until thorough |
+| Parallel agents | `/team N:executor "..."` | N agents working in parallel |
+| Batch tasks | `/ultrawork` | Run multiple independent tasks at once |
+| Evidence tracing | `/trace "hypothesis"` | Causal chain from symptom to root cause |
+| Multi-model | `/sciomc` | Claude + Codex + Gemini simultaneously |
+| Continuous poll | `/loop Xm /command` | Run command every X minutes |
+| QA cycle | `/ultraqa /pentest target` | Test → verify → fix loop |
 
 ## Autopilot Pentest
 
