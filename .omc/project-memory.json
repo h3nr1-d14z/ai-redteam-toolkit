@@ -1,0 +1,247 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774628786034,
+  "projectRoot": "/Users/h3nr1.d14z/Projects/HieuLD/RE-and-Pentesting",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs",
+      "examples"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "cheatsheets": {
+      "path": "cheatsheets",
+      "purpose": null,
+      "fileCount": 14,
+      "lastAccessed": 1774628786026,
+      "keyFiles": [
+        "burp-suite.md",
+        "docker-escape.md",
+        "ffuf.md",
+        "frida.md",
+        "ghidra.md"
+      ]
+    },
+    "commands": {
+      "path": "commands",
+      "purpose": null,
+      "fileCount": 95,
+      "lastAccessed": 1774628786027,
+      "keyFiles": [
+        "ad-enum.md",
+        "ad-pentest.md",
+        "ai-guardrail-test.md",
+        "ai-redteam.md",
+        "android-analyze.md"
+      ]
+    },
+    "ctf": {
+      "path": "ctf",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1774628786027,
+      "keyFiles": []
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 4,
+      "lastAccessed": 1774628786028,
+      "keyFiles": [
+        "certification-paths.md",
+        "hardware-requirements.md",
+        "mitre-attack-mapping.md",
+        "omc-integration.md"
+      ]
+    },
+    "engagements": {
+      "path": "engagements",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1774628786028,
+      "keyFiles": []
+    },
+    "examples": {
+      "path": "examples",
+      "purpose": "Example code",
+      "fileCount": 3,
+      "lastAccessed": 1774628786028,
+      "keyFiles": [
+        "sample-finding.md",
+        "sample-recon.md",
+        "sample-report-excerpt.md"
+      ]
+    },
+    "lab": {
+      "path": "lab",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1774628786028,
+      "keyFiles": []
+    },
+    "methodology": {
+      "path": "methodology",
+      "purpose": null,
+      "fileCount": 12,
+      "lastAccessed": 1774628786028,
+      "keyFiles": [
+        "ai-llm-security.md",
+        "api-pentest.md",
+        "binary-re.md",
+        "cloud-aws.md",
+        "exploit-dev.md"
+      ]
+    },
+    "notes": {
+      "path": "notes",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1774628786029,
+      "keyFiles": []
+    },
+    "setup": {
+      "path": "setup",
+      "purpose": null,
+      "fileCount": 16,
+      "lastAccessed": 1774628786029,
+      "keyFiles": [
+        "check-consistency.py",
+        "check-consistency.sh",
+        "check-tools.sh",
+        "install-ai-security.sh",
+        "install-cloud.sh"
+      ]
+    },
+    "templates": {
+      "path": "templates",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1774628786029,
+      "keyFiles": []
+    },
+    "tools": {
+      "path": "tools",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1774628786029,
+      "keyFiles": []
+    },
+    "wordlists": {
+      "path": "wordlists",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1774628786029,
+      "keyFiles": []
+    },
+    "templates/scripts": {
+      "path": "templates/scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 2,
+      "lastAccessed": 1774628786030,
+      "keyFiles": [
+        "exploit-template.py",
+        "frida-template.js"
+      ]
+    },
+    "wordlists/api": {
+      "path": "wordlists/api",
+      "purpose": "API routes",
+      "fileCount": 4,
+      "lastAccessed": 1774628786031,
+      "keyFiles": [
+        "graphql-queries.txt",
+        "methods.txt",
+        "rest-endpoints.txt"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "engagements/nemgiakho.com/report/pentest-report.md",
+      "accessCount": 4,
+      "lastAccessed": 1774659243796,
+      "type": "file"
+    },
+    {
+      "path": "engagements/nemgiakho.com/reports/final-report-2026-03-28.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659483237,
+      "type": "file"
+    },
+    {
+      "path": "engagements/nemgiakho.com/debrief.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659527697,
+      "type": "file"
+    },
+    {
+      "path": "engagements/nemgiakho.com/README.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659548596,
+      "type": "file"
+    },
+    {
+      "path": "engagements/nemgiakho.com/evidence/sqli-payloads.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659565943,
+      "type": "file"
+    },
+    {
+      "path": "engagements/nemgiakho.com/evidence/xss-poc.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659581582,
+      "type": "file"
+    },
+    {
+      "path": "engagements/nemgiakho.com/evidence/nmap-summary.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659598797,
+      "type": "file"
+    },
+    {
+      "path": "engagements/db.ptit.edu.vn/README.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659814361,
+      "type": "file"
+    },
+    {
+      "path": "engagements/db.ptit.edu.vn/checklist.md",
+      "accessCount": 1,
+      "lastAccessed": 1774659821116,
+      "type": "file"
+    },
+    {
+      "path": "engagements/db.ptit.edu.vn/findings/initial-recon.md",
+      "accessCount": 1,
+      "lastAccessed": 1774660495621,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
