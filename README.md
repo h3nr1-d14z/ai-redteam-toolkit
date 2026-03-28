@@ -457,11 +457,58 @@ AI-RedTeam-Toolkit is designed primarily for **Claude Code** but works with othe
 
 | Assistant | Support Level | How It Works |
 |-----------|--------------|--------------|
-| **Claude Code** | Full | CLAUDE.md instructions, slash commands, MCP integrations |
-| **OpenCode** | Compatible | Reads commands/ flat markdown files, shared tool infrastructure |
-| **Other AI Assistants** | Partial | commands/ markdown files serve as universal instruction sets |
+| **Claude Code** | Full | CLAUDE.md instructions, slash commands (`.claude/commands/`), MCP integrations |
+| **OpenCode** | Full | Symlink commands from `.claude/commands/` (see setup below) |
+| **Other AI Assistants** | Partial | `commands/` markdown files serve as universal instruction sets |
 
-The `commands/` directory contains domain-specific instruction files in a flat markdown layout (`commands/*.md`). Any AI coding assistant that reads project context can use these as methodology guides and workflow definitions.
+### Command Setup
+
+**Claude Code** -- works out of the box. Slash commands are in `.claude/commands/*.md` and auto-detected.
+
+**OpenCode** -- link the commands so OpenCode can find them:
+
+```bash
+# Option 1: Symlink .claude/commands to OpenCode's command directory
+ln -s "$(pwd)/.claude/commands" "$(pwd)/.opencode/commands"
+
+# Option 2: If OpenCode uses a different path, adjust accordingly
+mkdir -p .opencode
+ln -s "$(pwd)/.claude/commands" "$(pwd)/.opencode/commands"
+```
+
+**Any AI Assistant** -- the `commands/` directory (repo root) contains the same 95 command files as a flat mirror. Point your assistant to read from `commands/*.md` for methodology guides.
+
+### Command Structure
+
+Commands live in two locations (kept in sync):
+
+```
+.claude/commands/*.md   <-- Claude Code native (auto-detected as /slash commands)
+commands/*.md           <-- Universal mirror (works with any AI assistant)
+```
+
+Both directories contain identical 95 command files covering:
+- Engagement management (`/new-engagement`, `/close-engagement`)
+- Web pentesting (`/pentest`, `/sqli-test`, `/xss-hunt`, ...)
+- Mobile, RE, exploit dev, cloud, red team, OSINT, forensics, CTF, AI security
+- Each command includes methodology, tools, step-by-step workflow
+
+### oh-my-claudecode (OMC) Integration
+
+For advanced multi-agent orchestration, install [oh-my-claudecode](https://github.com/anthropics/claude-code):
+
+```bash
+npm install -g oh-my-claudecode
+omc setup
+```
+
+OMC adds specialized agents for security work:
+- `oh-my-claudecode:executor` -- focused task execution
+- `oh-my-claudecode:architect` -- strategic planning
+- `oh-my-claudecode:code-reviewer` -- code review
+- `oh-my-claudecode:security-reviewer` -- security vulnerability detection
+- `/ralph` -- autonomous loop until task completion
+- `/team N:executor "task"` -- parallel agent execution
 
 ## MCP Integrations
 
