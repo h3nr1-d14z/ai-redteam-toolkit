@@ -8,6 +8,11 @@
 set -euo pipefail
 
 # ---------------------------------------------------------------------------
+# Ensure common tool paths are in PATH
+# ---------------------------------------------------------------------------
+export PATH="${HOME}/go/bin:${HOME}/.local/bin:${PATH}"
+
+# ---------------------------------------------------------------------------
 # Colors
 # ---------------------------------------------------------------------------
 RED='\033[0;31m'
@@ -36,7 +41,7 @@ check_command() {
 
     if command -v "${cmd}" &>/dev/null; then
         local version
-        version=$( (${cmd} --version 2>/dev/null || ${cmd} -version 2>/dev/null || ${cmd} -V 2>/dev/null || echo "installed") | head -1 | cut -c1-40)
+        version=$(timeout 5 ${cmd} --version 2>/dev/null | head -1 | cut -c1-40 || timeout 5 ${cmd} -version 2>/dev/null | head -1 | cut -c1-40 || timeout 5 ${cmd} -V 2>/dev/null | head -1 | cut -c1-40 || echo "installed")
         printf "  ${GREEN}%-4s${NC} %-20s ${DIM}%s${NC}\n" "[OK]" "${name}" "${version}"
         INSTALLED=$((INSTALLED + 1))
     else
@@ -123,10 +128,19 @@ main() {
 
     # --- Reverse Engineering ---
     section_header "Reverse Engineering"
-    check_command "ghidra" "ghidraRun"
-    if [[ -d "/Applications/ghidra"* ]] 2>/dev/null || [[ -d "/opt/ghidra"* ]] 2>/dev/null; then
-        printf "  ${GREEN}%-4s${NC} %-20s ${DIM}%s${NC}\n" "[OK]" "ghidra (app)" "found in Applications or /opt"
-        # Don't double-count if command check already passed
+    # Check ghidra command or known install paths
+    if command -v ghidra &>/dev/null || command -v ghidraRun &>/dev/null; then
+        TOTAL=$((TOTAL + 1))
+        INSTALLED=$((INSTALLED + 1))
+        printf "  ${GREEN}%-4s${NC} %-20s ${DIM}%s${NC}\n" "[OK]" "ghidra" "installed"
+    elif [[ -d /opt/ghidra ]] || ls -d /Applications/ghidra* &>/dev/null 2>&1; then
+        TOTAL=$((TOTAL + 1))
+        INSTALLED=$((INSTALLED + 1))
+        printf "  ${GREEN}%-4s${NC} %-20s ${DIM}%s${NC}\n" "[OK]" "ghidra" "found in /opt or Applications"
+    else
+        TOTAL=$((TOTAL + 1))
+        MISSING=$((MISSING + 1))
+        printf "  ${RED}%-4s${NC} %-20s ${DIM}%s${NC}\n" "[--]" "ghidra" "not found"
     fi
     check_command "radare2" "r2"
     check_command "binwalk"
